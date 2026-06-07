@@ -8,8 +8,8 @@
 - Админка: `http://127.0.0.1:8088/wp-admin/`
 - Локальный runtime: `local-runtime/` (не коммитится)
 - БД: MariaDB 12.3.2, `127.0.0.1:3307`
-- Рабочий PHP для текущего сайта: PHP 7.4.33
-- Целевой PHP для проверки совместимости: PHP 8.5.7
+- Рабочий PHP для текущего сайта: PHP 8.5.7
+- Запасной PHP для сравнения: PHP 7.4.33
 
 Локальный пользователь администратора создан отдельно, данные лежат в `local-runtime/local-admin.txt`.
 
@@ -43,6 +43,14 @@
   - интерфейс WooCommerce на русском;
   - цена и цена распродажи видимы;
   - Yoast SEO-поля видимы.
+- Подлечена совместимость старых плагинов/темы с PHP 8.5:
+  - `mega_main_menu`: исправлен конфликт повторного `static $theme_option_file`;
+  - `essential-grid`: убрано PHP 8.5 warning по `continue` внутри `switch`;
+  - `revslider`: убраны PHP 8.5 warnings по `continue` внутри `switch`;
+  - `js_composer`: `__wakeup()` сделан совместимым с требованиями PHP;
+  - `woocommerce-products-filter`: закрыты CLI warnings по отсутствующему `REMOTE_ADDR`;
+  - тема `caden`: заменён удалённый jQuery `.live()` и включён cache-busting для `caden-theme.js`.
+- После патчей проверена загрузка WordPress на PHP 8.5: `WP=7.0`, `WC=10.8.1`, `Yoast=27.7`, `Locale=ru_RU`.
 
 ## Осталось / риски
 
@@ -50,7 +58,9 @@
 - `woocommerce-products-filter` сообщает `version higher than expected`, автоматическое обновление не применялось.
 - Активная тема `caden` версии `1.2` не имеет обновления через WordPress.org.
 - WooCommerce показывает предупреждение: в теме `Caden` есть устаревшие шаблоны WooCommerce.
-- PHP 8.5 пока не является рабочим режимом для всего сайта: старые коммерческие/неподдерживаемые плагины всё ещё дают fatal/warning. Последний подтверждённый fatal на PHP 8.5: `mega_main_menu/framework/options_generator.php`.
+- Патчи старых коммерческих/бандловых компонентов сделаны локально и не заменяют лицензионные обновления.
+- WPBakery, Slider Revolution, Essential Grid, Mega Main Menu и тема Caden остаются устаревшими с точки зрения безопасности и поддержки.
+- Перед переносом на прод нужен полный backup и прогон по ключевым пользовательским сценариям: каталог, карточка товара, корзина, оформление заказа, формы.
 
 ## Rollback
 

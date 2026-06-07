@@ -1,6 +1,6 @@
 param(
     [ValidateSet("7.4", "8.5")]
-    [string]$Php = "7.4",
+    [string]$Php = "8.5",
     [int]$Port = 8088
 )
 
