@@ -3,6 +3,8 @@ $ErrorActionPreference = "Stop"
 $root = Resolve-Path (Join-Path $PSScriptRoot "..")
 $runtime = Join-Path $root "local-runtime"
 $pidFiles = @(
+    (Join-Path $runtime "caddy.pid"),
+    (Join-Path $runtime "php-cgi.pid"),
     (Join-Path $runtime "php-server.pid"),
     (Join-Path $runtime "mariadb.pid")
 )
