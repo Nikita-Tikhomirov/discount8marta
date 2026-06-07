@@ -1,0 +1,32 @@
+# Keep the client site, database dumps, and local runtime out of public git.
+*
+
+# Allow repository metadata and local setup docs/scripts.
+!.gitignore
+!README.md
+!AGENTS.md
+!docker-compose.yml
+!Dockerfile
+!tools/
+!tools/**
+!docs/
+!docs/**
+
+# Always ignore sensitive WordPress/runtime artifacts even if rules change.
+wp-config.php
+*.sql
+*.sql.gz
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.rar
+*.log
+error_log
+cookie.txt
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+.tmb/
+.quarantine/
+local-runtime/
