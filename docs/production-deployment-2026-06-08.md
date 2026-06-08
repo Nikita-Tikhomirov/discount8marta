@@ -34,8 +34,8 @@ Site: `https://discount8marta.ru/`
 
 - Temporary `codex-*` PHP files and plugin ZIP files were removed from production.
 - The aborted direct FTP temp folder `woocommerce.codex-new-20260608-195950` was removed.
-- Rollback folders intentionally remain on production:
-  - `wp-content/plugins/woocommerce.pre-codex-20260608-201000`
-  - `wp-content/plugins/wordpress-seo.pre-codex-20260608-201209`
+- Rollback folders intentionally remain on production outside `wp-content/plugins`, so WordPress does not count them as inactive outdated plugins:
+  - `wp-content/codex-rollbacks/woocommerce.pre-codex-20260608-201000`
+  - `wp-content/codex-rollbacks/wordpress-seo.pre-codex-20260608-201209`
 
 No production credentials or database dumps are stored in git.
