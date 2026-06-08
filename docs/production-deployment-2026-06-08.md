@@ -16,6 +16,33 @@ Site: `https://discount8marta.ru/`
 - Updated WooCommerce files to `10.8.1`.
 - Updated Yoast SEO files to `27.7`.
 - Uploaded current Russian language files for WooCommerce and Yoast SEO.
+- Updated remaining WordPress.org plugins available through official packages:
+  - Bot for Telegram on WooCommerce `1.2.6` -> `1.3.0`
+  - Checkout Field Editor for WooCommerce `1.4.5` -> `2.1.8`
+  - Classic Editor `1.6.3` -> `1.7.0`
+  - Contact Form 7 `5.3.2` -> `6.1.6`
+  - Cyr to Lat enhanced `3.5` -> `3.7.4`
+  - Easy HTTPS (SSL) Redirection `1.9.1` -> `2.0.0`
+  - HTTP / HTTPS Removal `3.1` -> `3.2.8`
+  - Index WP MySQL For Speed `1.4.4` -> `1.5.7`
+  - Loco Translate `2.5.0` -> `2.8.5`
+  - Market Exporter `2.0.17` -> `2.0.23`
+  - MC4WP: Mailchimp for WordPress `4.8.3` -> `4.13.0`
+  - Optimize Database after Deleting Revisions `5.0.3` -> `5.3.0`
+  - Popup Maker `1.15.0` -> `1.22.0`
+  - Product Feed Manager for WooCommerce `7.2.25` -> `7.5.4`
+  - Redux `4.1.24` -> `4.5.11`
+  - Saphali Woocommerce Russian `1.8.10` -> `2.0.1`
+  - Shortcodes Ultimate `5.9.6` -> `7.7.0`
+  - Simple Local Avatars `2.2.0` -> `2.8.6`
+  - Smush `3.8.2` -> `4.1.0`
+  - TinyMCE Advanced `5.4.0` -> `5.9.2`
+  - WP File Manager `7.1.7` -> `8.0.4`
+  - WP-Optimize `3.2.6` -> `4.5.5`
+  - YITH WooCommerce Compare `2.4.4` -> `3.10.0`
+  - YITH WooCommerce Wishlist `3.0.18` -> `4.15.0`
+  - YITH WooCommerce Zoom Magnifier `1.3.22` -> `2.50.0`
+  - YML for Yandx Market `5.5.0` -> `5.5.1`
 
 ## Verification
 
@@ -29,10 +56,12 @@ Site: `https://discount8marta.ru/`
 - Test product `35081` has regular price, sale price, Yoast title, and Yoast meta description.
 - Home page and shop page return HTTP `200`.
 - Browser check confirmed carousel item width matches owl item width on the home page.
+- After updating all WordPress.org plugins, the only remaining plugin update shown by WordPress is WPBakery Page Builder `5.4.5` -> `8.7.3`, which has no package URL available on the site.
 
 ## Server Cleanup
 
 - Temporary `codex-*` PHP files and plugin ZIP files were removed from production.
+- Temporary plugin updater scripts were removed from production.
 - The aborted direct FTP temp folder `woocommerce.codex-new-20260608-195950` was removed.
 - Rollback folders intentionally remain on production outside `wp-content/plugins`, so WordPress does not count them as inactive outdated plugins:
   - `wp-content/codex-rollbacks/woocommerce.pre-codex-20260608-201000`
