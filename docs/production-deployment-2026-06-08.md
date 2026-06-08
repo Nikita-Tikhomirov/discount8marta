@@ -16,6 +16,9 @@ Site: `https://discount8marta.ru/`
 - Updated WooCommerce files to `10.8.1`.
 - Updated Yoast SEO files to `27.7`.
 - Uploaded current Russian language files for WooCommerce and Yoast SEO.
+- Fixed the post-update production fatal error on uncached home page requests:
+  - root cause: `wp-content/themes/caden/functions.php` called `$wp_filesystem->exists()` while `$wp_filesystem` was `null`;
+  - fix: Caden now falls back to `file_exists()`, `file_get_contents()`, and `file_put_contents()` for generated theme CSS/JS files when WP Filesystem is not initialized.
 - Updated remaining WordPress.org plugins available through official packages:
   - Bot for Telegram on WooCommerce `1.2.6` -> `1.3.0`
   - Checkout Field Editor for WooCommerce `1.4.5` -> `2.1.8`
@@ -55,14 +58,18 @@ Site: `https://discount8marta.ru/`
 - WooCommerce product data label: `Данные Товара`.
 - Test product `35081` has regular price, sale price, Yoast title, and Yoast meta description.
 - Home page and shop page return HTTP `200`.
+- Uncached home page URLs return HTTP `200` with no WordPress critical error.
 - Browser check confirmed carousel item width matches owl item width on the home page.
-- After updating all WordPress.org plugins, the only remaining plugin update shown by WordPress is WPBakery Page Builder `5.4.5` -> `8.7.3`, which has no package URL available on the site.
+- After updating all WordPress.org plugins, the only remaining plugin updates shown by WordPress are paid/no-package updates:
+  - active `WPBakery Page Builder` `5.4.5` -> `8.7.3`;
+  - inactive `WPML Multilingual CMS` `3.9.0` -> `4.9.4`.
 
 ## Server Cleanup
 
 - Temporary `codex-*` PHP files and plugin ZIP files were removed from production.
 - Temporary plugin updater scripts were removed from production.
 - The aborted direct FTP temp folder `woocommerce.codex-new-20260608-195950` was removed.
+- One-file local rollback for the Caden fatal fix was stored outside git under `local-runtime/prod-backups/`.
 - Rollback folders intentionally remain on production outside `wp-content/plugins`, so WordPress does not count them as inactive outdated plugins:
   - `wp-content/codex-rollbacks/woocommerce.pre-codex-20260608-201000`
   - `wp-content/codex-rollbacks/wordpress-seo.pre-codex-20260608-201209`
