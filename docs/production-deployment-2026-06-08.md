@@ -19,6 +19,9 @@ Site: `https://discount8marta.ru/`
 - Fixed the post-update production fatal error on uncached home page requests:
   - root cause: `wp-content/themes/caden/functions.php` called `$wp_filesystem->exists()` while `$wp_filesystem` was `null`;
   - fix: Caden now falls back to `file_exists()`, `file_get_contents()`, and `file_put_contents()` for generated theme CSS/JS files when WP Filesystem is not initialized.
+- Reset the product edit screen metabox order for user `discount8marta` / `Юлия`:
+  - root cause: WordPress user meta `meta-box-order_product` had `woocommerce-product-data` saved in the `side` column;
+  - fix: moved `woocommerce-product-data` to the `normal` column before `wpseo_meta`.
 - Updated remaining WordPress.org plugins available through official packages:
   - Bot for Telegram on WooCommerce `1.2.6` -> `1.3.0`
   - Checkout Field Editor for WooCommerce `1.4.5` -> `2.1.8`
@@ -59,6 +62,7 @@ Site: `https://discount8marta.ru/`
 - Test product `35081` has regular price, sale price, Yoast title, and Yoast meta description.
 - Home page and shop page return HTTP `200`.
 - Uncached home page URLs return HTTP `200` with no WordPress critical error.
+- Product edit screen user meta now keeps `woocommerce-product-data` in the normal column for user `discount8marta` / `Юлия`.
 - Browser check confirmed carousel item width matches owl item width on the home page.
 - After updating all WordPress.org plugins, the only remaining plugin updates shown by WordPress are paid/no-package updates:
   - active `WPBakery Page Builder` `5.4.5` -> `8.7.3`;
